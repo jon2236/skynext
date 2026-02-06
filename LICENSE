@@ -20,7 +20,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-El código de este proyecto se distribuye bajo licencia MIT.
+The code of this project is released under the MIT License.
 
-Este proyecto utiliza el modelo **Llama 3.1** de Meta, el cual está sujeto a su propia licencia.
-El uso del modelo requiere aceptar los términos de Meta en Hugging Face.
+This project uses the Llama 3.1 model by Meta, which is subject to its own license.
+Use of the model requires accepting Meta’s terms on Hugging Face.
