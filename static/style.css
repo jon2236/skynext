@@ -1,0 +1,119 @@
+html {
+    overflow-y: scroll;
+}
+
+body{
+    /* display: flex;
+    flex-direction: column;
+    max-width: 78%;
+    margin: 0 auto;
+    align-items: center; */
+    background-color: #131314;
+}
+
+h1{
+    display: flex;
+    max-width: 100%;
+    text-align:left;
+    align-items: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+    font-size: 15px;
+    color: #c4c7c5;
+    gap: 6px;
+}
+
+span{
+    font-family: "Caveat", cursive;
+    font-weight: bolder;
+    font-size: 27px;
+    color: darkslategray;
+}
+
+#hero{
+    display: flex;
+    flex-direction: column;
+    max-width: 78%;
+    margin: 0 auto;
+}
+
+#title{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-family:"Science Gothic", sans-serif;
+    font-weight: bolder;
+    color:#c4c7c5;
+}
+
+.input-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#input{
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1e1f20;
+    border-radius: 40px;
+    border: 1px solid #1c1d1e;
+    resize: none;
+    outline: none;
+    color: #e6e6e6;
+    box-sizing: border-box;
+    scrollbar-gutter: stable;
+}
+
+#input::placeholder {
+    color: #a0a0a0;
+    font-size: 16px;
+    opacity: 1;
+}
+
+#btn {
+    position: absolute;
+    right: 22px;
+    bottom: 12px;
+    padding: 12px 12px;
+    background-color: #1e1f20;
+    color: #c4c7c5;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#btn:hover {
+    background-color:darkslategray;
+}
+
+#output {
+    display: none;
+    width: 100%;
+    margin: 1rem auto;
+    max-width: 600px;
+    padding: 15px;
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1e1f20;
+    border-radius: 40px;
+    border: 1px solid #1c1d1e;
+    resize: none;
+    outline: none;
+    color: #e6e6e6;
+    box-sizing: border-box;
+    scrollbar-gutter: stable;
+}
+
+.logo {
+    width: 400px;   /* probá 60, 80, 100 según te guste */
+    height: auto;
+    margin: 10px auto;
+    display: block;
+}

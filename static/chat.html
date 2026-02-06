@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>SkyNext AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Science+Gothic:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Desarrollado por<span>Jonatan Quiroga</span></h1>
+    </header>
+
+    <section id="hero">
+        <h2 id="title">SkyNext AI</h2>
+        <div class="input-wrapper">
+            <textarea id="input" rows="5" cols="60" placeholder="Pregúntale a Next" ></textarea>
+            <button id="btn" onclick="send()">Consultar</button>
+        </div>
+        <div id="output"></div>
+        <img class="logo" src="/static/skynext1color.png" alt="Logo Next AI">
+    </section>
+
+
+    <script>
+    async function send() {
+        const msg = document.getElementById("input").value;
+        const output = document.getElementById("output");
+
+        output.style.display = "block";
+        output.innerText = "Pensando...";
+
+        const res = await fetch("http://127.0.0.1:8000/chat", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ message: msg })
+        });
+
+        const data = await res.json();
+        document.getElementById("output").innerText = data.response;
+        }
+    </script>
+</body>
+</html>
