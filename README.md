@@ -14,12 +14,12 @@ SkyNext AI esta compuesto por FastAPI + Llama-3.1-8B-Instruct optimizado para GP
 ## Instalación rápida (paso a paso)
 
 1. Clona el repo
-    ```bash
+    Abre la terminal (bash)
     git clone https://github.com/jon2236/skynext.git
     cd skynext
 
 2. Crea y activa un entorno virtual (muy recomendado)
-    Bash# Linux / macOS
+    # Linux / macOS (Bash)
     python -m venv venv
     source venv/bin/activate
 
