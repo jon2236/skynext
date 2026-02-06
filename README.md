@@ -1,3 +1,5 @@
+![Screenshoot de Skynext](static/demo.png)
+
 # SkyNext AI con Llama 3.1 8B
 
 SkyNext AI esta compuesto por FastAPI + Llama-3.1-8B-Instruct optimizado para GPUs con **8 GB VRAM** (RTX 3060/4060/etc.).
@@ -40,6 +42,11 @@ SkyNext AI esta compuesto por FastAPI + Llama-3.1-8B-Instruct optimizado para GP
 ## Notas importantes
 
 La primera ejecución puede tardar 2–10 minutos: descarga ~5–6 GB del modelo cuantizado + compilación de kernels de bitsandbytes.
+Si te pide token al cargar el modelo:  
+1. Creá cuenta en https://huggingface.co  
+2. Aceptá la licencia de Llama-3.1 en https://huggingface.co/meta-llama/Meta-Llama-3.1-8B-Instruct  
+3. Generá token en https://huggingface.co/settings/tokens → "read" scope basta  
+4. En terminal: `huggingface-cli login` y pegá el token
 Si ves error de VRAM: baja max_new_tokens en app.py (ej: de 900 a 400) o cierra otros programas que usen la GPU.
 Velocidad esperada: ~20–40 tokens/segundo en RTX 3060/4060 8GB.
 El modelo requiere aceptar la licencia de Meta en Hugging Face (te pedirá login/token la primera vez que lo descargue).

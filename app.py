@@ -63,46 +63,66 @@ def chat(prompt: Prompt):
         {"role": "user", "content": prompt.message},
     ]
 
-    inputs = tokenizer.apply_chat_template(
-        messages,
-        return_tensors="pt",
-        add_generation_prompt=True,
-        padding=True,
-        return_dict=True,
-        ).to("cuda")
+    try:
+        inputs = tokenizer.apply_chat_template(
+            messages,
+            return_tensors="pt",
+            add_generation_prompt=True,
+            padding=True,
+            return_dict=True,
+            ).to("cuda")
 
 
-    terminators = [
-        tokenizer.eos_token_id,
-        tokenizer.convert_tokens_to_ids("<|eot_id|>")
-    ]
+        terminators = [
+            tokenizer.eos_token_id,
+            tokenizer.convert_tokens_to_ids("<|eot_id|>")
+        ]
 
 
-    output = model.generate(
-        **inputs,
-        max_new_tokens=900,
-        do_sample=True,
-        temperature=0.6,
-        top_p=0.9,
-        repetition_penalty=1.1,
-        eos_token_id=terminators,
-        pad_token_id=tokenizer.eos_token_id
-    )
+        output = model.generate(
+            **inputs,
+            max_new_tokens=900,
+            do_sample=True,
+            temperature=0.6,
+            top_p=0.9,
+            repetition_penalty=1.1,
+            eos_token_id=terminators,
+            pad_token_id=tokenizer.eos_token_id
+        )
 
 
-    generated_tokens = output[0][inputs.input_ids.shape[-1]:]
+        generated_tokens = output[0][inputs.input_ids.shape[-1]:]
 
 
-    response = tokenizer.decode(
-        generated_tokens,
-        skip_special_tokens=True,
-    ).strip()
+        response = tokenizer.decode(
+            generated_tokens,
+            skip_special_tokens=True,
+        ).strip()
 
 
-    response = re.sub(r'<\|reserved_special_token_\d+\|>', '', response)
+        response = re.sub(r'<\|reserved_special_token_\d+\|>', '', response)
 
 
-    return JSONResponse(
-        content={"response": response},
-        media_type="application/json; charset=utf-8"
-    )
+        return JSONResponse(
+            content={"response": response},
+            media_type="application/json; charset=utf-8"
+        )
+    
+    except torch.cuda.OutOfMemoryError as e:
+        return JSONResponse(
+            content={
+                "error": "GPU sin memoria suficiente. Prueba con max_new_tokens más bajo (ej: 300/500), cierra otras aplicaciones que usen la GPU, o reinicia el servidor."
+            },
+            status_code=500
+        )
+    
+    except Exception as e:
+        import traceback
+        error_msg = traceback.format_exc()
+        print(f"Error inesperado: {error_msg}")
+        return JSONResponse(
+            content={
+                "error": f"Error interno del servidor: {str(e)}. Revisa la consola del servidor para más detalles."
+            },
+            status_code=500
+        )
